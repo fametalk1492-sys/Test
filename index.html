@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm bạn gái tớ nhé ❤️</title>
+    <!-- Thêm font fallback lãng mạn (Great Vibes) đề phòng máy người dùng chưa cài DFVN Aveline -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Khai báo phông chữ DFVN Aveline (nếu máy có cài sẽ ưu tiên hiển thị) */
+        @font-face {
+            font-family: 'DFVN Aveline';
+            src: local('DFVN Aveline');
+        }
+
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ff758f;
+            --bg-color: #fff0f3;
+            --text-color: #590d22;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Ưu tiên DFVN Aveline, dự phòng Great Vibes cho tiêu đề và Quicksand cho văn bản thường */
+            font-family: 'DFVN Aveline', 'Great Vibes', 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffb3c6 0%, #ffcbf2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--text-color);
+            position: relative;
+        }
+
+        /* Hiệu ứng trái tim rơi */
+        .heart {
+            position: absolute;
+            top: -10vh;
+            font-size: 24px;
+            color: #ff4d6d;
+            opacity: 0.7;
+            animation: fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Container chứa nội dung */
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.3);
+            text-align: center;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+            width: 90%;
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* Màn hình 1: Tỏ tình */
+        #screen1 h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        .btn-group {
+            position: relative;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #btnYes {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+
+        #btnYes:hover {
+            background-color: #c9184a;
+            transform: scale(1.05);
+        }
+
+        #btnNo {
+            background-color: #e0e0e0;
+            color: #555;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%); /* Căn giữa ban đầu, khi hover sẽ bị ghi đè */
+        }
+
+        /* Màn hình 2: Form Hẹn Hò */
+        #screen2 {
+            display: none; /* Ẩn đi lúc đầu */
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        #screen2 h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffb3c6;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Quicksand', sans-serif;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .radio-item input[type="radio"] {
+            accent-color: var(--primary-color);
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        #btnSubmit {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #btnSubmit:hover {
+            background-color: #c9184a;
+        }
+
+        /* Màn hình 3: Thành công */
+        #screen3 {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        #screen3 h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Căn chỉnh lại vị trí ban đầu cho 2 nút mượt mà hơn */
+        .btn-wrapper {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tạo nền trái tim rơi -->
+    <div id="heartsContainer"></div>
+
+    <div class="container">
+        <!-- MÀN HÌNH 1: TỎ TÌNH -->
+        <div id="screen1">
+            <h1>Làm bạn gái tớ nhé? ❤️</h1>
+            <div class="btn-wrapper">
+                <button id="btnYes">Tớ đồng ý</button>
+                <div style="width: 120px; height: 50px;">
+                    <!-- Vùng đệm để giữ layout, nút Không sẽ nằm absolute -->
+                    <button id="btnNo">Không</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 2: CHỌN LỊCH -->
+        <div id="screen2">
+            <h2>Chọn lịch hẹn hò nha 🥰</h2>
+            
+            <!-- FormSubmit tích hợp gửi thẳng về Email MỚI -->
+            <form  action="https://formsubmit.co/fastt1492@gmail.com" method="POST">
+                <input type="fastt1492@gmail.com" name="fastt1492@gmail.com">
+                
+                <!-- Cấu hình ẩn cho FormSubmit -->
+                <input type="hidden" name="_subject" value="❤️ Bạn gái đã chọn lịch hẹn hò nè!">
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Chặn chuyển hướng để xử lý bằng AJAX mượt mà -->
+
+                <div class="form-group">
+                    <label for="datetime">Ngày lành tháng tốt :</label>
+                    <input type="datetime-local" id="datetime" name="Thoi_Gian" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Hôm đó em muốn ăn gì nè?</label>
+                    <div class="radio-group">
+                        <label class="radio-item">
+                            <input type="radio" name="Mon_An" value="Phở" required> Phở 🍜
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="Mon_An" value="Pizza"> Pizza 🍕
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="Mon_An" value="Mỳ Ý"> Mỳ Ý 🍝
+                        </label>
+                        <label class="radio-item">
+                            <input type="radio" name="Mon_An" value="Cho anh Chọn hihi"> Cho anh Chọn hihi 🤭
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" id="btnSubmit">Gửi cho tớ thư xác nhận💌</button>
+            </form>
+        </div>
+
+        <!-- MÀN HÌNH 3: CẢM ƠN -->
+        <div id="screen3">
+            <h2>Tuyệt vờiii 🎉</h2>
+            <p style="font-family: 'Quicksand', sans-serif; font-size: 1.2rem; color: #ff758f;">
+                Tớ đã nhận được thông tin rồi nha.<br>Hẹn gặp công chúa vào ngày hôm đó! ❤️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Tạo hiệu ứng trái tim rơi ---
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for(let i=0; i<20; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // --- 2. Xử lý nút "Không" bay lung tung ---
+        const btnNo = document.getElementById('btnNo');
+        
+        function dodgeButton() {
+            // Lấy kích thước cửa sổ
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            
+            // Chuyển nút sang absolute để bay tự do trên toàn màn hình
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${x}px`;
+            btnNo.style.top = `${y}px`;
+            btnNo.style.transform = 'none'; // Xoá transform căn giữa ban đầu
+        }
+
+        // Kích hoạt né tránh cả khi di chuột (PC) và khi chạm (Điện thoại)
+        btnNo.addEventListener('mouseover', dodgeButton);
+        btnNo.addEventListener('touchstart', dodgeButton);
+
+        // --- 3. Chuyển màn hình khi nhấn "Tớ đồng ý" ---
+        const btnYes = document.getElementById('btnYes');
+        btnYes.addEventListener('click', () => {
+            document.getElementById('screen1').style.display = 'none';
+            document.getElementById('screen2').style.display = 'block';
+        });
+
+        // --- 4. Thiết lập thời gian tối thiểu (Không được chọn trong quá khứ) ---
+        // Lấy thời gian hiện tại theo múi giờ Việt Nam
+        const now = new Date();
+        const vnTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Ho_Chi_Minh"}));
+        
+        // Format đúng chuẩn YYYY-MM-DDTHH:MM cho thẻ <input type="datetime-local">
+        const year = vnTime.getFullYear();
+        const month = String(vnTime.getMonth() + 1).padStart(2, '0');
+        const day = String(vnTime.getDate()).padStart(2, '0');
+        const hours = String(vnTime.getHours()).padStart(2, '0');
+        const minutes = String(vnTime.getMinutes()).padStart(2, '0');
+        
+        const minDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+        document.getElementById('datetime').min = minDateTime;
+
+        // --- 5. Gửi Form mượt mà bằng AJAX ---
+        const form = document.getElementById('dateForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn trang tự tải lại
+            const submitBtn = document.getElementById('btnSubmit');
+            submitBtn.innerText = "Đang gửi đi... ⏳";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Ẩn form, hiện lời cảm ơn
+                    document.getElementById('screen2').style.display = 'none';
+                    document.getElementById('screen3').style.display = 'block';
+                } else {
+                    alert("Úi, có lỗi một chút khi gửi thư. Cậu thử lại nha!");
+                    submitBtn.innerText = "Gửi cho tớ thư xác nhận💌";
+                    submitBtn.disabled = false;
+                }
+            }).catch(error => {
+                alert("Úi, mạng có vẻ yếu rồi. Cậu thử lại nha!");
+                submitBtn.innerText = "Gửi cho tớ thư xác nhận💌";
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
